@@ -1,3 +1,29 @@
 .page-content{
-    padding-top: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+.ml-auto{
+    margin-left: auto;
+}
+a:hover{
+    color: deeppink;
+}
+
+.pink-button:hover{
+    color: #fff;
+}
+.pink-button{
+    background-color: deeppink;
+    color: #fff;
+}
+a{
+   text-decoration: none;
+   color: #424242;
+}
+.nav-link{
+    color: #fff !important;
+}
+.bg-dark{
+    background-color: indigo !important;
+    color: #fff !important;
 }

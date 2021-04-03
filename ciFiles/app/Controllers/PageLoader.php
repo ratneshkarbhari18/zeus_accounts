@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\AccountsModel;
+
+
 
 class PageLoader extends BaseController
 {
@@ -18,14 +21,16 @@ class PageLoader extends BaseController
 		if(!$logged_in){
 			return redirect()->to(site_url("login"));
 		}
+		$accountsModel = new AccountsModel();
+		$allAccounts = $accountsModel->findAll();
 		$data = array(
-			"title" => "Dashboard"
+			"title" => "Dashboard",
+			"allAccounts" => $allAccounts
 		);
 		$this->page_loader("dashboard",$data);
 	}
 
-	public function login($success="",$error="")
-	{
+	public function login($success="",$error=""){
 		$session = session();
 		$logged_in = $session->logged_in;
 		if($logged_in){
@@ -38,5 +43,52 @@ class PageLoader extends BaseController
 		);
 		$this->page_loader("login",$data);
 	}
+
+	public function settings($success="",$error=""){
+		$session = session();
+		$logged_in = $session->logged_in;
+		if(!$logged_in){
+			return redirect()->to(site_url("login"));
+		}
+		$data = array(
+			"title" => "Settings",
+			"success" => $success,
+			"error" => $error
+		);
+		$this->page_loader("settings",$data);
+	}
+
+	public function manage_accounts($success="",$error=""){
+		$session = session();
+		$logged_in = $session->logged_in;
+		if(!$logged_in){
+			return redirect()->to(site_url("login"));
+		}
+		$accountsModel = new AccountsModel();
+		$allAccounts = $accountsModel->findAll();
+		$data = array(
+			"title" => "Manage Accounts",
+			"accounts" => $allAccounts,
+			"success" => $success,
+			"error" => $error
+		);	
+		$this->page_loader("manage_accounts",$data);
+	}
+
+	public function add_new_account($success="",$error=""){
+		$session = session();
+		$logged_in = $session->logged_in;
+		if(!$logged_in){
+			return redirect()->to(site_url("login"));
+		}
+		$data = array(
+			"title" => "Add New Account",
+			"success" => $success,
+			"error" => $error
+		);	
+		$this->page_loader("add_new_account",$data);
+	}
+
+	
 
 }

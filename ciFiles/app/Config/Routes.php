@@ -36,6 +36,13 @@ $routes->get('/', 'PageLoader::dashboard');
 $routes->get("login","PageLoader::login");
 
 $routes->post("login-exe","Authentication::login");
+$routes->get("settings-page","PageLoader::settings");
+
+$routes->get("logout-exe","Authentication::logout");
+
+$routes->get("manage-accounts","PageLoader::manage_accounts");
+$routes->get("add-new-account","PageLoader::add_new_account");
+$routes->get("add-new-transaction","PageLoader::add_new_transaction");
 
 /*
  * --------------------------------------------------------------------
